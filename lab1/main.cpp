@@ -101,14 +101,17 @@ void zad4(int **arr, int clmn, int row)
             zad[cnt] = arr[i][n];
             if (dir == 0 && i < clmn) 
                 i++;
-            if (dir == 1 && n < row)
+            if (dir == 1 && n < row) {
                 n++;
+                if (!m && spur != clmn - 1)
+                    spur--;
+            }
             if (dir == 2 && i > -1)
                 i--;
             if (dir == 3 && n > -1) {
                 n--;
-                if (m == 0 && spur == (clmn - 1))
-                    spur = spur - 1;
+                if (!m)
+                    spur--;
             }
             cnt++;
         }
