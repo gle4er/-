@@ -8,11 +8,13 @@ using namespace std;
 void zad1(int **arr, int clmn, int row)
 {
 //по правым диагоналям
+    cout<<"zad1"<<endl;
     int *zad = new int [clmn * row];
     int i = clmn - 1, n = 0;
     for (int cnt = 0; cnt < clmn * row; cnt++) {
         if (i < clmn && n < row && i > -1 && n > -1) {
             zad[cnt] = arr[i][n];
+            cout<<zad[cnt]<<" ";
             i++;
             n++;
         }
@@ -30,17 +32,20 @@ void zad1(int **arr, int clmn, int row)
         }
     }
     free(zad);
+    cout<<endl;
     return;
 }
 
 void zad2(int **arr, int clmn, int row)
 {
 //по левым диагоналям
+    cout<<endl<<"zad2"<<endl;
     int *zad = new int [clmn * row];
     int i = 0, tmp = 0, n = 0;
     for (int cnt = 0; cnt < clmn * row; cnt++) {
         if (i < clmn && n < row && i > -1 && n > -1) {
             zad[cnt] = arr[i][n];
+            cout<<zad[cnt]<<" ";
             i--;
             n++;
         }
@@ -59,18 +64,21 @@ void zad2(int **arr, int clmn, int row)
         }
     }
     free(zad);
+    cout<<endl;
     return;
 }
 
 void zad3(int **arr, int clmn, int row)
 {
 //по спирали от центра
+    cout<<endl<<"zad3"<<endl;
     int *zad = new int [clmn * row];
     int dir = 0, m, i = (clmn - 1) / 2, n = (row - 1) / 2;
     double spur = 1;
     for (int cnt = 0; cnt < clmn * row;) {
         for (m = 0; m < floor(spur); m++) {
             zad[cnt] = arr[i][n];
+            cout<<zad[cnt]<<" ";
             if (dir == 0 && i < clmn) 
                 i++;
             if (dir == 1 && n < row) 
@@ -87,18 +95,21 @@ void zad3(int **arr, int clmn, int row)
         spur = spur + 0.5;
     }
     free(zad);
+    cout<<endl;
     return;
 }
 
 void zad4(int **arr, int clmn, int row)
 {
 //по спирали к центру
+    cout<<endl<<"zad4"<<endl;
     int *zad = new int [clmn * row];
     int dir = 0, m, i = 0, n = 0;
     double spur = clmn - 1;
     for (int cnt = 0; cnt < clmn * row;) {
         for (m = 0; m < spur; m++) {
             zad[cnt] = arr[i][n];
+            cout<<zad[cnt]<<" ";
             if (dir == 0 && i < clmn) 
                 i++;
             if (dir == 1 && n < row) {
@@ -120,6 +131,7 @@ void zad4(int **arr, int clmn, int row)
             dir = 0;
     }
     free(zad);
+    cout<<endl;
     return;
 }
 
@@ -136,6 +148,11 @@ int main(int argc, char *argv[])
     for (i = 0; i < atoi(argv[1]); i++)
         for (n = 0; n < atoi(argv[2]); n++)
             arr[i][n] = rand() % 10 + 1;
+    for (n = 0; n < atoi(argv[2]); n++) {
+        for (i = 0; i < atoi(argv[1]); i++)
+                cout<<arr[i][n]<<"  ";
+        cout<<endl;
+    }
     zad1(arr, atoi(argv[1]), atoi(argv[2]));
     zad2(arr, atoi(argv[1]), atoi(argv[2]));
     zad3(arr, atoi(argv[1]), atoi(argv[2]));
