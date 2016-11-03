@@ -1,32 +1,13 @@
-#include <iostream>
-
 class tPoint 
 {
     private:
-        int x, y, color;
+        int x, y;
+        uint8_t color[4];
     public:
-        int getx() const 
-        {
-            return x;
-        }
-        int gety() const 
-        {
-            return y;
-        }
-        void setx(int tmp) 
-        {
-            x = tmp;
-        }
-        void sety(int tmp)
-        {
-            y = tmp;
-        }
-        int getColor() const
-        {
-            return color;
-        }
-        int setColor(int tmp) const
-        {
-            color = tmp;
-        }
+        int getx() const; 
+        int gety() const; 
+        uint8_t *getColor();
+        void setx(int tmp); 
+        void sety(int tmp);
+        void setColor(uint64_t tmp);
 };

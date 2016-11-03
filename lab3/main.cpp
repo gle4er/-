@@ -1,38 +1,17 @@
-#include <SDL2/SDL.h>
-#include "tPoint.h"
-#include <unistd.h>
-#include <stdint.h>
-
-void initGfx(int SCREEN_WIDTH, int SCREEN_HEIGHT);
-void drawPoints(tPoint *points);
-void clearJunk();
-uint64_t randomiwe(void);
+#include "lab3.h"
 
 const int SCREEN_WIDTH = 320;
 const int SCREEN_HEIGHT = 240;
-uint64_t s[] = {1L, 2L};
 
-uint64_t randomiwe(void) 
-{
-    uint64_t s1 = s[0];
-	const uint64_t s0 = s[1];
-	const uint64_t result = s0 + s1;
-	s[0] = s0;
-	s1 ^= s1 << 23;
-	s[1] = s1 ^ s0 ^ (s1 >> 18) ^ (s0 >> 5);
-    return result;
-}
-
-void setPos(tPoint *points)
+void setPoint(tPoint *points)
 {
     for (int i = 0; i < 100; i++) {
         srand(time(0));
         points[i].setx(randomiwe() % SCREEN_WIDTH);
         points[i].sety(randomiwe() % SCREEN_HEIGHT);
-        points[i].setColor(randomiwe() % 3);
+        points[i].setColor(randomiwe());
     }
 }
-        
 
 int main()
 {
@@ -44,7 +23,7 @@ int main()
 			while( SDL_PollEvent( &e ) != 0 )
 					if( e.type == SDL_QUIT ) 
 						quit = true;
-        setPos(points);
+        setPoint(points);
         drawPoints(points);
     }
     clearJunk();

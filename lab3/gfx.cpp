@@ -1,9 +1,5 @@
-#include "tPoint.h"
-#include <SDL2/SDL.h>
+#include "lab3.h"
 
-using namespace std;
-
-const 
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
 
@@ -39,11 +35,13 @@ void drawPoints(tPoint *points)
 {
     SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
 	SDL_RenderClear(gRenderer);
-	SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
     for (int i = 0; i < 100; i++) {
+        uint8_t *colors = points[i].getColor();
+	    SDL_SetRenderDrawColor( gRenderer, colors[0], colors[1], colors[2], colors[3]);
 	    SDL_RenderDrawPoint(gRenderer, points[i].getx(), points[i].gety());
     }
 	SDL_RenderPresent( gRenderer );
+    SDL_Delay(1000);
 }
 
 void clearJunk()
