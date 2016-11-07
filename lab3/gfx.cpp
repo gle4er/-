@@ -28,7 +28,6 @@ void initGfx(int SCREEN_WIDTH, int SCREEN_HEIGHT)
 			}
 		}
 	}
-    SDL_Delay(3000);
 }
 
 void drawPoints(tPoint *points)
@@ -41,7 +40,7 @@ void drawPoints(tPoint *points)
 	    SDL_RenderDrawPoint(gRenderer, points[i].getx(), points[i].gety());
     }
 	SDL_RenderPresent( gRenderer );
-    SDL_Delay(1000);
+    SDL_Delay(100);
 }
 
 void clearJunk()

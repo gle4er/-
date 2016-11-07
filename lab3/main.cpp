@@ -1,21 +1,35 @@
 #include "lab3.h"
 
-const int SCREEN_WIDTH = 320;
-const int SCREEN_HEIGHT = 240;
+int SCREEN_WIDTH = 320;
+int SCREEN_HEIGHT = 240;
 
-void setPoint(tPoint *points)
+void movePoints(tPoint *points)
 {
     for (int i = 0; i < 100; i++) {
-        srand(time(0));
-        points[i].setx(randomiwe() % SCREEN_WIDTH);
-        points[i].sety(randomiwe() % SCREEN_HEIGHT);
-        points[i].setColor(randomiwe());
+        int tmp = points[i].getx() + points[i].getvecx();
+        if (tmp > SCREEN_WIDTH) {
+            points[i].setx(SCREEN_WIDTH - points[i].getx());
+            points[i].setvecx(points[i].getvecx() * -1);
+        } else if (tmp < SCREEN_WIDTH) {
+            points[i].setx(SCREEN_WIDTH + points[i].getx());
+            points[i].setvecx(points[i].getvecx() * -1);
+        } else
+            points[i].setx(points[i].getx() + points[i].getvecx());
+        tmp = points[i].gety() + points[i].getvecy();
+        if (tmp > SCREEN_HEIGHT) {
+            points[i].sety(SCREEN_HEIGHT - points[i].gety());
+            points[i].setvecy(points[i].getvecy() * -1);
+        } else if (tmp < SCREEN_HEIGHT) {
+            points[i].sety(SCREEN_HEIGHT + points[i].gety());
+            points[i].setvecy(points[i].getvecy() * -1);
+        } else
+            points[i].sety(points[i].gety() + points[i].getvecy());
     }
 }
 
 int main()
 {
-    tPoint points[100];
+    tPoint points[100];     //спросить про аргументы конструктора
     initGfx(SCREEN_WIDTH, SCREEN_HEIGHT);
 	bool quit = false;
 	SDL_Event e;
@@ -23,8 +37,8 @@ int main()
 			while( SDL_PollEvent( &e ) != 0 )
 					if( e.type == SDL_QUIT ) 
 						quit = true;
-        setPoint(points);
         drawPoints(points);
+        movePoints(points);
     }
     clearJunk();
     return 0;
