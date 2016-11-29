@@ -1,0 +1,3 @@
+class tRectangle : public tLine
+{
+};
