@@ -10,7 +10,7 @@ uint64_t randomiwe(void);
 extern int SCREEN_WIDTH;
 extern int SCREEN_HEIGHT;
 
-tRectangle:tRectangle()
+tRectangle::tRectangle()
 {
     setWidth(200);
     setHeight(100);
