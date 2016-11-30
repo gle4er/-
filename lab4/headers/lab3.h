@@ -13,6 +13,7 @@ using namespace std;
 
 void initGfx(int SCREEN_WIDTH, int SCREEN_HEIGHT);
 void drawThatShit(tPoint point, tLine line, tCircle circle, tRectangle rect, tRiangle trig);
+void drawRect(tRectangle rect);
 void clearJunk();
 uint64_t randomiwe(void);
 #endif

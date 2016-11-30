@@ -41,12 +41,20 @@ void drawThatShit(tPoint point, tLine line, tCircle circle, tRectangle rect, tRi
     lineRGBA(gRenderer, line.getx(), line.gety(), line.getx1(), line.gety1(), colors[0], colors[1], colors[2], 0xFF);
     colors = circle.getColor();
     circleRGBA(gRenderer, circle.getx(), circle.gety(), circle.getr(), colors[0], colors[1], colors[2], 0xFF);
-    colors = rect.getColor();
-    rectangleRGBA(gRenderer, rect.getx(), rect.gety(), rect.getx1(), rect.gety1(), colors[0], colors[1], colors[2], 0xFF);
     colors = trig.getColor();
+    drawRect(rect);
     trigonRGBA(gRenderer, trig.getx(), trig.gety(), trig.getx1(), trig.gety1(), trig.getx2(), trig.gety2(), colors[0], colors[1], colors[2], 0xFF); 
 	SDL_RenderPresent( gRenderer );
     SDL_Delay(32);
+}
+
+void drawRect(tRectangle rect)
+{
+    uint8_t *colors = rect.getColor();
+    lineRGBA(gRenderer, rect.getx(), rect.gety(), rect.getx1(), rect.gety1(), colors[0], colors[1], colors[2], 0xFF);
+    lineRGBA(gRenderer, rect.getx1(), rect.gety1(), rect.getx2(), rect.gety2(), colors[0], colors[1], colors[2], 0xFF);
+    lineRGBA(gRenderer, rect.getx2(), rect.gety2(), rect.getx3(), rect.gety3(), colors[0], colors[1], colors[2], 0xFF);
+    lineRGBA(gRenderer, rect.getx3(), rect.gety3(), rect.getx(), rect.gety(), colors[0], colors[1], colors[2], 0xFF);
 }
 
 void clearJunk()
