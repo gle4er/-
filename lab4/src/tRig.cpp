@@ -14,15 +14,8 @@ int lim = 300;
 
 tRiangle::tRiangle()
 {
-    setx(randomiwe() % lim);
-    sety(randomiwe() % lim);
-    setx1(randomiwe() % lim);
-    sety1(randomiwe() % lim);
     setx2(randomiwe() % lim);
     sety2(randomiwe() % lim);
-    setColor(randomiwe());
-    setvecx(randomiwe() % 6 + 1, randomiwe() % 2 + 1);
-    setvecy(randomiwe() % 6 + 1, randomiwe() % 2 + 1);
 }
 
 tRiangle::~tRiangle()

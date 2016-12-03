@@ -19,12 +19,9 @@ tRectangle::tRectangle()
     setx1(getx() + getWidth());
     sety1(gety());
     setx2(getx1());
-    sety2(gety1() + getWidth());
+    sety2(gety1() + getHeight());
     setx3(getx());
     sety3(gety2());
-    setColor(randomiwe());
-    setvecx(randomiwe() % 6 + 1, randomiwe() % 2 + 1);
-    setvecy(randomiwe() % 6 + 1, randomiwe() % 2 + 1);
 }
 
 tRectangle::~tRectangle()

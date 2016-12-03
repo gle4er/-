@@ -10,12 +10,7 @@ extern int SCREEN_HEIGHT;
 
 tCircle::tCircle()
 {
-    setx(randomiwe() % SCREEN_WIDTH);
-    sety(randomiwe() % SCREEN_HEIGHT);
     setr(randomiwe() % 200);
-    setColor(randomiwe());
-    setvecx(randomiwe() % 6 + 1, randomiwe() % 2 + 1);
-    setvecy(randomiwe() % 6 + 1, randomiwe() % 2 + 1);
 }
 
 tCircle::~tCircle()

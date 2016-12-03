@@ -31,7 +31,7 @@ void initGfx(int SCREEN_WIDTH, int SCREEN_HEIGHT)
 	}
 }
 
-void drawThatShit(tPoint point, tLine line, tCircle circle, tRectangle rect, tRiangle trig)
+void drawThatShit(tPoint point, tLine line, tCircle circle, tRectangle rect, tRiangle trig, tEllipse elps)
 {
     SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
 	SDL_RenderClear(gRenderer);
@@ -44,6 +44,8 @@ void drawThatShit(tPoint point, tLine line, tCircle circle, tRectangle rect, tRi
     colors = trig.getColor();
     drawRect(rect);
     trigonRGBA(gRenderer, trig.getx(), trig.gety(), trig.getx1(), trig.gety1(), trig.getx2(), trig.gety2(), colors[0], colors[1], colors[2], 0xFF); 
+    colors = elps.getColor();
+    ellipseRGBA(gRenderer, elps.getx(), elps.gety(), elps.getx1(),  elps.gety1(), colors[0], colors[1], colors[2], 0xFF); 
 	SDL_RenderPresent( gRenderer );
     SDL_Delay(32);
 }
