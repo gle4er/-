@@ -17,6 +17,13 @@ tPoint::tPoint()
     setvecy(randomiwe() % 6 + 1, randomiwe() % 2 + 1);
 }
 
+tPoint::tPoint(int x, int y, uint32_t color)
+{
+    setx(x);
+    sety(y);
+    setColor(color);
+}
+
 tPoint::tPoint(int w, int h)
 {
     setx(randomiwe() % w);

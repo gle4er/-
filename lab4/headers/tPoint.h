@@ -5,6 +5,7 @@ class tPoint
         uint8_t color[4];
     public:
         tPoint();
+        tPoint(int x, int y, uint32_t color);
         tPoint(int w, int h);
         ~tPoint();
         void movePoint(int SCREEN_WIDTH, int SCREEN_HEIGHT); 

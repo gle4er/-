@@ -15,6 +15,7 @@ using namespace std;
 void initGfx(int SCREEN_WIDTH, int SCREEN_HEIGHT);
 void drawThatShit(tPoint point, tLine line, tCircle circle, tRectangle rect, tRiangle trig, tEllipse elps);
 void drawRect(tRectangle rect);
+void drawElps(tEllipse elps);
 void clearJunk();
 uint64_t randomiwe(void);
 #endif

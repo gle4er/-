@@ -1,4 +1,5 @@
-#include "lab3.h"
+#include "../headers/lab3.h"
+#include <vector>
 #include <SDL2/SDL2_gfxPrimitives.h>
 
 SDL_Window* gWindow = NULL;
@@ -45,7 +46,7 @@ void drawThatShit(tPoint point, tLine line, tCircle circle, tRectangle rect, tRi
     drawRect(rect);
     trigonRGBA(gRenderer, trig.getx(), trig.gety(), trig.getx1(), trig.gety1(), trig.getx2(), trig.gety2(), colors[0], colors[1], colors[2], 0xFF); 
     colors = elps.getColor();
-    ellipseRGBA(gRenderer, elps.getx(), elps.gety(), elps.getx1(),  elps.gety1(), colors[0], colors[1], colors[2], 0xFF); 
+    drawElps(elps);
 	SDL_RenderPresent( gRenderer );
     SDL_Delay(32);
 }
@@ -58,6 +59,14 @@ void drawRect(tRectangle rect)
     lineRGBA(gRenderer, rect.getx2(), rect.gety2(), rect.getx3(), rect.gety3(), colors[0], colors[1], colors[2], 0xFF);
     lineRGBA(gRenderer, rect.getx3(), rect.gety3(), rect.getx(), rect.gety(), colors[0], colors[1], colors[2], 0xFF);
 }
+
+void drawElps(tEllipse elps)
+{
+    uint8_t *colors = elps.getColor();
+    std::vector<tPoint*> points = getPoints();
+    for (int i; i < points.size; i++) 
+        pixelRGBA(gRenderer, points[i].getx(), points[i].gety(), colors[0], colors[1], colors[2], 0xFF);
+} 
 
 void clearJunk()
 {
