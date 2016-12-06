@@ -1,8 +1,4 @@
-#include <iostream>
-#include "tPoint.h"
-#include "tLine.h"
-#include <unistd.h>
-#include <cmath>
+#include "../headers/tLine.h"
 
 uint64_t randomiwe(void);
 extern int SCREEN_WIDTH;

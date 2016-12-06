@@ -1,8 +1,5 @@
 #include <iostream>
-#include "tPoint.h"
-#include "tCircle.h"
-#include <unistd.h>
-#include <cmath>
+#include "../headers/tCircle.h"
 
 uint64_t randomiwe(void);
 extern int SCREEN_WIDTH;

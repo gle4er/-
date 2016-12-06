@@ -1,7 +1,4 @@
-#include <iostream>
-#include "tPoint.h"
-#include <unistd.h>
-#include <cmath>
+#include "../headers/tPoint.h"
 
 uint64_t randomiwe(void);
 
@@ -17,7 +14,7 @@ tPoint::tPoint()
     setvecy(randomiwe() % 6 + 1, randomiwe() % 2 + 1);
 }
 
-tPoint::tPoint(int x, int y, uint32_t color)
+tPoint::tPoint(int x, int y, uint8_t *color)
 {
     setx(x);
     sety(y);
@@ -110,4 +107,10 @@ void tPoint::setColor(uint64_t tmp)
         color[i] = tmp % 0xFF;
         tmp = tmp / 1000;
     }
+}
+
+void tPoint::setColor(uint8_t *tmp)
+{
+    for (int i = 0; i < 4; i++) 
+        color[i] = tmp[i];
 }

@@ -1,3 +1,7 @@
+#ifndef CIRCLE
+#define CIRCLE
+#include "../headers/tPoint.h"
+
 class tCircle : public tPoint
 {
     private:
@@ -9,3 +13,5 @@ class tCircle : public tPoint
         void setr(int tmp);
         void move();
 };
+
+#endif

@@ -32,7 +32,7 @@ void initGfx(int SCREEN_WIDTH, int SCREEN_HEIGHT)
 	}
 }
 
-void drawThatShit(tPoint point, tLine line, tCircle circle, tRectangle rect, tRiangle trig, tEllipse elps)
+void drawThatShit(tPoint point, tLine line, tCircle circle, tRectangle rect, tRiangle trig, tEllipse elps, tRhombus romb)
 {
     SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
 	SDL_RenderClear(gRenderer);
@@ -47,6 +47,7 @@ void drawThatShit(tPoint point, tLine line, tCircle circle, tRectangle rect, tRi
     trigonRGBA(gRenderer, trig.getx(), trig.gety(), trig.getx1(), trig.gety1(), trig.getx2(), trig.gety2(), colors[0], colors[1], colors[2], 0xFF); 
     colors = elps.getColor();
     drawElps(elps);
+    drawRect(romb);
 	SDL_RenderPresent( gRenderer );
     SDL_Delay(32);
 }
@@ -60,12 +61,21 @@ void drawRect(tRectangle rect)
     lineRGBA(gRenderer, rect.getx3(), rect.gety3(), rect.getx(), rect.gety(), colors[0], colors[1], colors[2], 0xFF);
 }
 
+void drawRect(tRhombus rect)
+{
+    uint8_t *colors = rect.getColor();
+    lineRGBA(gRenderer, rect.getx(), rect.gety(), rect.getx1(), rect.gety1(), colors[0], colors[1], colors[2], 0xFF);
+    lineRGBA(gRenderer, rect.getx1(), rect.gety1(), rect.getx2(), rect.gety2(), colors[0], colors[1], colors[2], 0xFF);
+    lineRGBA(gRenderer, rect.getx2(), rect.gety2(), rect.getx3(), rect.gety3(), colors[0], colors[1], colors[2], 0xFF);
+    lineRGBA(gRenderer, rect.getx3(), rect.gety3(), rect.getx(), rect.gety(), colors[0], colors[1], colors[2], 0xFF);
+}
+
 void drawElps(tEllipse elps)
 {
     uint8_t *colors = elps.getColor();
-    std::vector<tPoint*> points = getPoints();
-    for (int i; i < points.size; i++) 
-        pixelRGBA(gRenderer, points[i].getx(), points[i].gety(), colors[0], colors[1], colors[2], 0xFF);
+    std::vector<tPoint*> points = elps.getPoints();
+    for (int i = 0; i < points.size(); i++) 
+        pixelRGBA(gRenderer, points[i]->getx(), points[i]->gety(), colors[0], colors[1], colors[2], 0xFF);
 } 
 
 void clearJunk()

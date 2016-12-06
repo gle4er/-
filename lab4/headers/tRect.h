@@ -1,3 +1,8 @@
+#ifndef RECTANGLE
+#define RECTANGLE
+
+#include "../headers/tLine.h"
+
 class tRectangle : public tLine
 {
     protected:
@@ -20,3 +25,5 @@ class tRectangle : public tLine
         int gety3() const;
         void move();
 };
+
+#endif

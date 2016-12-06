@@ -1,9 +1,4 @@
-#include <iostream>
-#include "../headers/tPoint.h"
-#include "../headers/tLine.h"
 #include "../headers/tRect.h"
-#include <unistd.h>
-#include <cmath>
 
 uint64_t randomiwe(void);
 
@@ -12,8 +7,8 @@ extern int SCREEN_HEIGHT;
 
 tRectangle::tRectangle()
 {
-    setWidth(200);
-    setHeight(100);
+    setWidth(randomiwe() % 500);
+    setHeight(randomiwe() % 450);
     setx(randomiwe() % (SCREEN_WIDTH - getWidth()));
     sety(randomiwe() % (SCREEN_HEIGHT - getHeight()));
     setx1(getx() + getWidth());

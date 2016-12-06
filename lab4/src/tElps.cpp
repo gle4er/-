@@ -1,42 +1,38 @@
-#include <iostream>
-#include "../headers/tPoint.h"
 #include "../headers/tElps.h"
-#include <unistd.h>
-#include <cmath>
 
 uint64_t randomiwe(void);
 
 extern int SCREEN_WIDTH;
 extern int SCREEN_HEIGHT;
 
-void setpnt(int x, int y, int deltax, int deltay)
-{
-    setPoints(x + deltax, y + deltay);
-    setPoints(x - deltax, y + deltay);
-    setPoints(x + deltax, y - deltay);
-    setPoints(x - deltax, y - deltay);
-}
-
 tEllipse::tEllipse()
 {
-    setColor(randomiwe());
-    setx(randomiwe() % SCREEN_WIDTH);
-    sety(randomiwe() % SCREEN_HEIGHT);
-    radx = randomiwe() % 500;
-    rady = randomiwe() % 400;
-    int radx2 = radx * radx;
-    int rady2 = rady * rady;
-    double quarter = round(radx2 / sqrt(radx2 + rady2));
-    for (int x = 0; x <= quarter; x++) {
-        int y = rady * sqrt(1 - x * x / radx2);
-        setpnt(getx(), gety(), x, floor(y));
-        setpnt(getx(), gety(), x, floor(y) + 1);
-    }
-    quarter = round(rady2 / sqrt(radx2 + rady2));
-    for (int y = 0; y <= quarter; y++) {
-        int x = radx * sqrt(1 - y * y / rady2);
-        setpnt(getx(), gety(), floor(x), y);
-        setpnt(getx(), gety(), floor(x) + 1, y);
+    //radx = randomiwe() % 500;
+    //rady = randomiwe() % 400;
+    radx = 100;
+    rady = 50;
+
+    int hh = rady * rady;
+    int ww = radx * radx;
+    int hhww = hh * ww;
+    int x0 = radx;
+    int dx = 0;
+    setPoints(getx() + radx, gety());
+    setPoints(getx() - radx, gety());
+    for (int y = 1; y <= rady; y++) {
+        int x1 = x0 - (dx - 1);  
+        for ( ; x1 > 0; x1--)
+            if (x1*x1*hh + y*y*ww <= hhww)
+                break;
+        dx = x0 - x1;
+        x0 = x1;
+
+        for (int x = -x0; x <= x0; x++) {
+            if (((x >= -x0) && (x <= -x0 + 1)) || ((x <= x0) && (x >= x0 - 1))) {
+                setPoints(getx() + x, gety() - y);
+                setPoints(getx() + x, gety() + y);
+            }
+        }
     }
 }
 
@@ -44,18 +40,22 @@ void tEllipse::move()
 {
     setx(getx() + getvecx());
     sety(gety() + getvecy());
-    if (getx() > SCREEN_WIDTH || getx() < 0)
+    for (int i = 0; i < points.size(); i++) {
+        points[i]->setx(points[i]->getx() + getvecx());
+        points[i]->sety(points[i]->gety() + getvecy());
+    }
+    if (getx() + radx > SCREEN_WIDTH || getx() < radx)
         setvecx(getvecx() * -1);
-    if (gety() > SCREEN_HEIGHT || gety() < 0)
+    if (gety() + rady > SCREEN_HEIGHT || gety() < rady)
         setvecy(getvecy() * -1);
 }
 
 void tEllipse::setPoints(int x, int y)
 {
-    points.insert(tPoint(x, y, getColor()));
+    points.push_back(new tPoint(x, y, getColor()));
 }
 
 std::vector<tPoint*> tEllipse::getPoints() const
 {
-    return std::vector<tPoint*> points;
+    return points;
 }

@@ -1,3 +1,7 @@
+#ifndef LINE
+#define LINE
+#include "../headers/tPoint.h"
+
 class tLine : public tPoint
 {
     protected:
@@ -11,3 +15,4 @@ class tLine : public tPoint
         void sety1(int tmp);
         void move();
 };
+#endif

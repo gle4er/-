@@ -1,4 +1,9 @@
+#ifndef ELLIPSE
+#define ELLIPSE
+
+#include "../headers/tPoint.h"
 #include <vector>
+
 class tEllipse : public tPoint
 {
     protected:
@@ -10,3 +15,5 @@ class tEllipse : public tPoint
         std::vector<tPoint*> getPoints() const;
         void move();
 };
+
+#endif

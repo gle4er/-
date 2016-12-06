@@ -1,9 +1,4 @@
-#include <iostream>
-#include "tPoint.h"
-#include "tLine.h"
-#include "tRig.h"
-#include <cmath>
-#include <unistd.h>
+#include "../headers/tRig.h"
 
 uint64_t randomiwe(void);
 

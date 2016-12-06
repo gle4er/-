@@ -1,3 +1,8 @@
+#ifndef TRIANGLE
+#define TRIANGLE
+
+#include "../headers/tLine.h"
+
 class tRiangle : public tLine
 {
     protected:
@@ -11,3 +16,5 @@ class tRiangle : public tLine
        void sety2(int tmp);
        void move();
 };
+
+#endif
