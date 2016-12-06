@@ -7,7 +7,8 @@
 class tPoint 
 {
     protected:
-        int x, y, vecx, vecy;
+        int vecx, vecy;
+        double x, y;
         uint8_t color[4];
     public:
         tPoint();
@@ -16,13 +17,13 @@ class tPoint
         ~tPoint();
         void movePoint(int SCREEN_WIDTH, int SCREEN_HEIGHT); 
         void move(); 
-        int getx() const; 
-        int gety() const; 
+        double getx() const; 
+        double gety() const; 
         int getvecx() const;
         int getvecy() const;
         uint8_t *getColor();
-        void setx(int tmp); 
-        void sety(int tmp);
+        void setx(double tmp); 
+        void sety(double tmp);
         void setvecx(int tmp);
         void setvecx(int tmp, int tmp2);
         void setvecy(int tmp);

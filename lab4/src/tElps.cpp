@@ -59,3 +59,16 @@ std::vector<tPoint*> tEllipse::getPoints() const
 {
     return points;
 }
+
+void tEllipse::rotate()
+{
+    double x0 = getx();
+    double y0 = gety();
+    double aR = 1 * M_PI / 180;
+    for (int i = 0; i < points.size(); i++) {
+        double x = points[i]->getx();
+        double y = points[i]->gety();
+        points[i]->setx((x - x0) * cos(aR) - (y - y0) * sin(aR) + x0); 
+        points[i]->sety((x - x0) * sin(aR) + (y - y0) * cos(aR) + y0); 
+    }
+}

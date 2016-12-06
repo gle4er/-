@@ -13,17 +13,18 @@ class tRectangle : public tLine
         ~tRectangle();
         void setWidth(int tmp);
         void setHeight(int tmp);
-        void setx2(int tmp);
-        void sety2(int tmp);
-        void setx3(int tmp);
-        void sety3(int tmp);
+        void setx2(double tmp);
+        void sety2(double tmp);
+        void setx3(double tmp);
+        void sety3(double tmp);
         int getWidth() const;
         int getHeight() const;
-        int getx2() const;
-        int gety2() const;
-        int getx3() const;
-        int gety3() const;
+        double getx2() const;
+        double gety2() const;
+        double getx3() const;
+        double gety3() const;
         void move();
+        void rotate();
 };
 
 #endif

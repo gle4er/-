@@ -5,14 +5,22 @@
 class tLine : public tPoint
 {
     protected:
-        int x1, y1;
+        double x1, y1, x0, y0;
     public:
         tLine();
         ~tLine();
-        int getx1() const;
-        int gety1() const;
-        void setx1(int tmp);
-        void sety1(int tmp);
+        double getx1() const;
+        double gety1() const;
+        double getx0() const;
+        double gety0() const;
+        void setx1(double tmp);
+        void sety1(double tmp);
+        void setx0(double tmp, double tmp1);
+        void sety0(double tmp, double tmp1);
+        void setx0(double tmp);
+        void sety0(double tmp);
         void move();
+        void rotate();
 };
+
 #endif

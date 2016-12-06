@@ -44,12 +44,12 @@ void tPoint::move()
         setvecy(getvecy() * -1);
 }
 
-int tPoint::getx() const
+double tPoint::getx() const
 {
     return x;
 }
 
-int tPoint::gety() const 
+double tPoint::gety() const 
 {
     return y;
 }
@@ -69,12 +69,12 @@ uint8_t* tPoint::getColor()
     return color;
 }
 
-void tPoint::setx(int tmp) 
+void tPoint::setx(double tmp) 
 {
     x = tmp;
 }
 
-void tPoint::sety(int tmp)
+void tPoint::sety(double tmp)
 {
     y = tmp;
 }

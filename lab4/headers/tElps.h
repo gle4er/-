@@ -13,6 +13,7 @@ class tEllipse : public tPoint
         tEllipse();
         void setPoints(int x, int y);
         std::vector<tPoint*> getPoints() const;
+        void rotate();
         void move();
 };
 

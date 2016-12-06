@@ -15,6 +15,7 @@ class tRiangle : public tLine
        void setx2(int tmp);
        void sety2(int tmp);
        void move();
+       void rotate();
 };
 
 #endif
