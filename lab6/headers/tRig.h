@@ -10,10 +10,10 @@ class tRiangle : public tLine
     public:
        tRiangle();
        ~tRiangle();
-       int getx2() const;
-       int gety2() const;
-       void setx2(int tmp);
-       void sety2(int tmp);
+       double getx2() const;
+       double gety2() const;
+       void setx2(double tmp);
+       void sety2(double tmp);
        void move();
        void rotate();
 };
